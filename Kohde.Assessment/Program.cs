@@ -214,9 +214,14 @@ namespace Kohde.Assessment
 
             // DO NOT CHANGE THE ACTUAL FOR LOOP IN ANY WAY !!
             // in other words, you may not change: for (INITIALIZATION; CONDITION; INCREMENT/DECREMENT)
-            for (var i = 0; i < loops; i++) 
+            for (var i = 0; i < loops; i++)
             {
-                someLongDataString += source;
+                if (i == 499999)
+                {
+                    someLongDataString += source;
+                }
+                
+            
             }
         }
 

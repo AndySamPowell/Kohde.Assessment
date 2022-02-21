@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kohde.Assessment
 {
-    public abstract class Animal
+    public abstract class Animal : IAnimal
     {
         public string Name { get; set; }
         public int Age { get; set; }
