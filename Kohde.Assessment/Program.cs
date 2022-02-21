@@ -294,6 +294,12 @@ namespace Kohde.Assessment
             Console.WriteLine("Name:" + cat.Name + " Age: " + cat.Age);
         }
 
+
+        public static void GenericTester<IAnimal>()
+        {
+
+        }
+
         #endregion
 
         #region Assessment G Methods
