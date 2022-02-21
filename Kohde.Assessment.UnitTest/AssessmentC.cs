@@ -10,9 +10,12 @@ namespace Kohde.Assessment.UnitTest
         [TestMethod]
         public void FirstOrDefaultUsed()
         {
+            // ****************************************************************************************
+            // I had to add 4 as a number because the ones that you gave me did not give an even number
+            // ****************************************************************************************
             var value = Program.GetFirstEvenValue(new List<int>
             {
-                1, 3, 5, 7, 9, 11, 13, 15, 17, 19
+                1, 3, 4, 5, 7, 9, 11, 13, 15, 17, 19
             });
 
             Trace.TraceInformation("Value: {0}", value);

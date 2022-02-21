@@ -239,12 +239,15 @@ namespace Kohde.Assessment
         public static string GetSingleStringValue(List<string> stringList)
         {
             // THE OUTPUT MUST RENDER THE FIRST ITEM THAT CONTAINS AN 'a' INSIDE OF IT
-            var first = stringList.Where(x => x.IndexOf("a") != -1).Single();
+            var first = stringList.Where(x => x.IndexOf("a") != -1).SingleOrDefault();
             return first;
         }
 
-        #endregion
+
         
+
+        #endregion
+
         #region Assessment E Method
 
         public static DisposableObject DisposeSomeObject()
@@ -268,6 +271,11 @@ namespace Kohde.Assessment
         #endregion
 
         #region Assessment F Methods
+
+        public static void ShowSomeMammalInformation<IAnimal>( )
+        {
+            Console.WriteLine("Name:" + typeof(IAnimal).GetProperties().Select(p => p.Name).FirstOrDefault()); // + " Age: " + typeof(IAnimal).GetProperties().Select(p => p.Age));
+        }
 
         public static void ShowSomeHumanInformation(Human human)
         {
@@ -382,6 +390,8 @@ namespace Kohde.Assessment
         double GetDevicePrice();
     }
 
+
+   
     public class DeviceProcessor : IDeviceProcessor
     {
         protected IDevice Device { get; private set; }
