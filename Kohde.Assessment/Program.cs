@@ -272,11 +272,13 @@ namespace Kohde.Assessment
 
         #region Assessment F Methods
 
-        public static void ShowSomeMammalInformation<IAnimal>( )
+        public static void ShowSomeMammalInformation<IAnimal>(Animal animal )
         {
-            Console.WriteLine("Name:" + typeof(IAnimal).GetProperties().Select(p => p.Name).FirstOrDefault()); // + " Age: " + typeof(IAnimal).GetProperties().Select(p => p.Age));
+            Console.WriteLine(
+                "Name:" + typeof(IAnimal).GetField(nameof(Animal.Name)) 
+                + " Age: " + typeof(IAnimal).GetField(nameof(Animal.Age)));
         }
-
+        
         public static void ShowSomeHumanInformation(Human human)
         {
             Console.WriteLine("Name:" + human.Name + " Age: " + human.Age);
