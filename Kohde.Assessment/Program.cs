@@ -7,7 +7,7 @@ namespace Kohde.Assessment
     // *** NOTE ***
     // ALL CHANGES MUST BE ACCOMPANIED BY COMMENTS 
     // PLEASE READ ALL COMMENTS / INSTRUCTIONS
-    public static class Program
+    public static class Program 
     {
         static void Main(string[] args)
         {
@@ -293,11 +293,25 @@ namespace Kohde.Assessment
         {
             Console.WriteLine("Name:" + cat.Name + " Age: " + cat.Age);
         }
+        
+        //public static TResult GenericTester<TSource, TResult>(Func<TSource, TResult> func, TSource item)
+        //    where TSource : IAnimal
+            
+        //{
+        //    // ...
+        //    return func(item);
+        //}
 
 
-        public static void GenericTester<IAnimal>()
+        public static string GenericTester<TSource, TResult>(Func<TSource, string> func, TSource item)
+            where TSource : IAnimal
         {
-
+            if (func is null)
+            {
+                throw new ArgumentNullException(nameof(func));
+            }
+            // ...
+            return func(item);
         }
 
         #endregion
