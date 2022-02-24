@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Kohde.Assessment
 {
@@ -303,7 +304,7 @@ namespace Kohde.Assessment
         //}
 
 
-        public static string GenericTester<TSource, TResult>(Func<TSource, string> func, TSource item)
+        public static TResult GenericTester<TSource, TResult>(Func<TSource, TResult> func, TSource item)
             where TSource : IAnimal
         {
             if (func is null)
@@ -346,12 +347,49 @@ namespace Kohde.Assessment
             // AND RETURN THE STRING CONTENT
 
             // DO NOT CHANGE THE NAME, RETURN TYPE OR ANY IMPLEMENTATION OF THIS METHOD NOR THE BELOW METHOD
-            throw new NotImplementedException(); // ATT: REMOVE THIS LINE
+            
+
+            //First calll Program then the Method
+            
+            MethodInfo method = typeof(Program).GetMethod("DisplaySomeStuff");
+            
+            // Add the Generic 
+            MethodInfo genericMethod = method.MakeGenericMethod(typeof(string));
+            
+            // Call it with each of these parameters.
+            object[] parameter = {"Andy Powell"};
+
+            // Invoke the Method and return the string
+            object obj = genericMethod.Invoke(method, parameter);
+
+            return obj.ToString();
+
+           
         }
 
         public static string DisplaySomeStuff<T>(T toDisplay) where T : class
         {
             return string.Format("Here it is: {0}", toDisplay);
+        }
+
+
+
+        public static IEnumerable<char> SelectOnlyVowels(this IEnumerable<char> text )
+        {
+            // Made a list of the char in a list where only vowels show and this is an extension [this] and static
+            var vowels = "aeiou";
+            var result = "";
+            foreach (char c in text)
+            {
+                if (vowels.Contains(c))
+                {
+                    result += c;
+                }
+            }
+            return result;     
+
+
+            
         }
 
         #endregion

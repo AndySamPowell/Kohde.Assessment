@@ -64,7 +64,10 @@ namespace Kohde.Assessment.UnitTest
             });
             Trace.TraceInformation("{0}", resultA);
 
-            string Func2(Human x) => x.GetDetails();
+            //***********************************************
+            // I made Func2(Human x) => x into Func2(Human x) => x?
+
+            string Func2(Human x) => x?.GetDetails();
             Type[] typeArgs2 = { typeof(Human), typeof(string) };
             var generic2 = method.MakeGenericMethod(typeArgs2);
             var resultB = generic2.Invoke(typeof(Program), new object[]
