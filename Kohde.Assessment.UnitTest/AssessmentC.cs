@@ -21,6 +21,7 @@ namespace Kohde.Assessment.UnitTest
             Trace.TraceInformation("Value: {0}", value);
             Assert.IsTrue(value%2 == 0, "Indicates whether the use made use of the correct logic");
         }
+        
 
         [TestMethod]
         public void SingleOrDefaultUsed()

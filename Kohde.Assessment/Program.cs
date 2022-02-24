@@ -241,7 +241,7 @@ namespace Kohde.Assessment
         public static string GetSingleStringValue(List<string> stringList)
         {
             // THE OUTPUT MUST RENDER THE FIRST ITEM THAT CONTAINS AN 'a' INSIDE OF IT
-            var first = stringList.Where(x => x.IndexOf("a") != -1).Single();
+            var first = stringList.Where(x => x.IndexOf("a") != -1).FirstOrDefault();
             return first;
         }
 
@@ -426,8 +426,7 @@ namespace Kohde.Assessment
             Ioc.Container.Register<IDevice,SamsungDevice>();
             Ioc.Container.RegisterInstance<IDeviceProcessor>(new DeviceProcessor(new SamsungDevice()));
             
-            var dev =  new DeviceProcessor(new SamsungDevice());
-            double p  = dev.GetDevicePrice();
+           
 
 
         }
