@@ -1,6 +1,8 @@
 ﻿using System;
 using Kohde.Assessment.Container;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics;
+
 
 namespace Kohde.Assessment.UnitTest
 {
@@ -19,6 +21,7 @@ namespace Kohde.Assessment.UnitTest
             Assert.IsNotNull(processor, "IDeviceProcessor has not been implemented correctly");
             // call the GetDevicePrice method
             Console.WriteLine("Device Price: {0:C}", processor.GetDevicePrice());
+            Trace.TraceInformation("GetDevicePrice: {0}", processor.GetDevicePrice());
         }
     }
 }

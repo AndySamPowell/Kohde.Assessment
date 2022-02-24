@@ -40,6 +40,7 @@ namespace Kohde.Assessment.UnitTest
             });
 
             Assert.IsTrue(!string.IsNullOrEmpty(value2));
+            Trace.TraceInformation("Value: {0}", value2);
         }
     }
 }
