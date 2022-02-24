@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Kohde.Assessment.Container;
 
 namespace Kohde.Assessment
 {
@@ -240,7 +241,7 @@ namespace Kohde.Assessment
         public static string GetSingleStringValue(List<string> stringList)
         {
             // THE OUTPUT MUST RENDER THE FIRST ITEM THAT CONTAINS AN 'a' INSIDE OF IT
-            var first = stringList.Where(x => x.IndexOf("a") != -1).SingleOrDefault();
+            var first = stringList.Where(x => x.IndexOf("a") != -1).Single();
             return first;
         }
 
@@ -295,15 +296,6 @@ namespace Kohde.Assessment
             Console.WriteLine("Name:" + cat.Name + " Age: " + cat.Age);
         }
         
-        //public static TResult GenericTester<TSource, TResult>(Func<TSource, TResult> func, TSource item)
-        //    where TSource : IAnimal
-            
-        //{
-        //    // ...
-        //    return func(item);
-        //}
-
-
         public static TResult GenericTester<TSource, TResult>(Func<TSource, TResult> func, TSource item)
             where TSource : IAnimal
         {
@@ -339,7 +331,7 @@ namespace Kohde.Assessment
         #endregion
 
         #region Assessment H Methods
-
+        //Made this content in this method method
         public static string CallMethodWithReflection()
         {
             // BY MAKING USE OF ONLY REFLECTION
@@ -367,13 +359,14 @@ namespace Kohde.Assessment
            
         }
 
+        
         public static string DisplaySomeStuff<T>(T toDisplay) where T : class
         {
             return string.Format("Here it is: {0}", toDisplay);
         }
 
 
-
+        //Made this extension
         public static IEnumerable<char> SelectOnlyVowels(this IEnumerable<char> text )
         {
             // Made a list of the char in a list where only vowels show and this is an extension [this] and static
@@ -386,11 +379,15 @@ namespace Kohde.Assessment
                     result += c;
                 }
             }
-            return result;     
-
-
-            
+            return result;             
         }
+
+        public static IEnumerable<IAnimal> CustomWhere<T>(this T t) 
+        {
+            return null;
+        }
+
+
 
         #endregion
 
@@ -425,6 +422,14 @@ namespace Kohde.Assessment
             //var deviceProcessor = ???
             // call the GetDevicePrice method
             //Console.WriteLine(deviceProcessor.GetDevicePrice());
+
+            Ioc.Container.Register<IDevice,SamsungDevice>();
+            Ioc.Container.RegisterInstance<IDeviceProcessor>(new DeviceProcessor(new SamsungDevice()));
+            
+            var dev =  new DeviceProcessor(new SamsungDevice());
+            double p  = dev.GetDevicePrice();
+
+
         }
 
         #endregion
